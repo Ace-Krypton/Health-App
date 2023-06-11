@@ -71,7 +71,7 @@ Window {
       color: window.color
 
       ColumnLayout {
-        id: newId
+
         spacing: 5
 
         Text {
