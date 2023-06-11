@@ -10,6 +10,15 @@ Window {
   color: "#231F20"
   title: qsTr("Health App")
 
+  property var locale: Qt.locale()
+  property date currentTime: new Date()
+  property string timeString
+
+  function updateTime() {
+    currentTime = new Date()
+    timeString = currentTime.toLocaleTimeString(locale, Locale.ShortFormat)
+  }
+
   Row {
     id: topSide
     x: 30
@@ -71,8 +80,6 @@ Window {
       color: window.color
 
       ColumnLayout {
-        // This is merging test
-        // This is test after change
         spacing: 5
 
         Text {
@@ -104,6 +111,34 @@ Window {
       width: window.width / 3
       height: 100
       color: window.color
+
+      ColumnLayout {
+        spacing: 5
+
+        Text {
+          id: pHospitalInfo
+          color: "#A49B93"
+          text: "Marin General Hospital"
+          font.pixelSize: 20
+        }
+
+        Text {
+          id: pTimeInfo
+          color: "#A49B93"
+          font.pixelSize: 20
+          text: timeString
+        }
+
+        Timer {
+          id: timer
+          interval: 1000
+          running: true
+          repeat: true
+          onTriggered: {
+            window.updateTime()
+          }
+        }
+      }
     }
   }
 }
