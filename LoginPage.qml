@@ -2,14 +2,19 @@ import QtQuick
 import QtQuick.Controls
 
 Item {
-  width: 400
-  height: 300
+  width: columnID.implicitWidth
+  height: columnID.implicitHeight
 
   signal loginSuccess
 
   function clearFields() {
     usernameField.clear()
     passwordField.clear()
+  }
+
+  function validateFields() {
+    return usernameField.text.trim().length > 0 && passwordField.text.trim(
+          ).length > 0
   }
 
   Column {
@@ -41,12 +46,14 @@ Item {
         }
 
         onClicked: {
-          var username = usernameField.text
-          var password = passwordField.text
-          var success = userManager.loginUser(username, password)
-          messageLabel.color = success ? "green" : "red"
-          labelText.text = success ? "Successful Login" : "Failed Login"
-          success ? loginSuccess() : clearFields()
+          if (validateFields()) {
+            var username = usernameField.text
+            var password = passwordField.text
+            var success = userManager.loginUser(username, password)
+            messageLabel.color = success ? "green" : "red"
+            labelText.text = success ? "Successful Login" : "Failed Login"
+            success ? loginSuccess() : clearFields()
+          }
         }
       }
 
@@ -60,12 +67,14 @@ Item {
         }
 
         onClicked: {
-          var username = usernameField.text
-          var password = passwordField.text
-          var success = userManager.registerUser(username, password)
-          messageLabel.color = success ? "green" : "red"
-          labelText.text = success ? "Successful Register" : "Failed Register"
-          clearFields()
+          if (validateFields()) {
+            var username = usernameField.text
+            var password = passwordField.text
+            var success = userManager.registerUser(username, password)
+            messageLabel.color = success ? "green" : "red"
+            labelText.text = success ? "Successful Register" : "Failed Register"
+            clearFields()
+          }
         }
       }
     }
