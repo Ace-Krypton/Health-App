@@ -1,4 +1,3 @@
-// Main.qml
 import QtQuick
 import QtQuick.Window
 import QtQuick.Layouts 1.3
@@ -23,7 +22,6 @@ Window {
       id: loginPageComponent
 
       LoginPage {
-        // Define the loginSuccess signal handler
         onLoginSuccess: {
           stackView.replace(loginPageComponent, mainPageComponent)
         }

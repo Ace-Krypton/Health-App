@@ -46,8 +46,7 @@ Item {
           var success = userManager.loginUser(username, password)
           messageLabel.color = success ? "green" : "red"
           labelText.text = success ? "Successful Login" : "Failed Login"
-
-          clearFields()
+          success ? loginSuccess() : clearFields()
         }
       }
 
@@ -67,10 +66,6 @@ Item {
           messageLabel.color = success ? "green" : "red"
           labelText.text = success ? "Successful Register" : "Failed Register"
           clearFields()
-
-          if (success) {
-            loginSuccess()
-          }
         }
       }
     }
