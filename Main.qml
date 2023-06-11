@@ -1,6 +1,8 @@
 import QtQuick
 import QtQuick.Window
 import QtQuick.Layouts 1.3
+import QtQuick.Controls 2.5
+import QtQuick.Controls.Material 2.15
 
 Window {
   id: window
@@ -16,8 +18,7 @@ Window {
   property string dateString
 
   function updateTime() {
-    currentTime = new Date()
-    timeString = currentTime.toLocaleTimeString(locale, Locale.ShortFormat)
+    timeString = new Date().toLocaleTimeString(locale, Locale.ShortFormat)
   }
 
   function updateDay() {
@@ -143,14 +144,36 @@ Window {
           id: pTimeInfo
           color: "#A49B93"
           font.pixelSize: 17
-          text: timeString
+          text: window.timeString
         }
 
         Text {
           id: pDayInfo
           color: "#A49B93"
           font.pixelSize: 17
-          text: dateString
+          text: window.dateString
+        }
+      }
+
+      Button {
+        width: 60
+        height: 60
+        x: 250
+        y: 7
+
+        Material.background: window.color
+
+        Image {
+          anchors.fill: parent
+          x: 250
+          y: 7
+          width: 60
+          height: 60
+          source: "file:///home/draco/Downloads/notification.png"
+        }
+
+        onClicked: {
+          console.log("Notification Icon Clicked")
         }
       }
     }
