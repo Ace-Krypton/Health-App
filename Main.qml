@@ -71,7 +71,7 @@ Window {
       color: window.color
 
       ColumnLayout {
-
+        //This is merging test
         spacing: 5
 
         Text {
