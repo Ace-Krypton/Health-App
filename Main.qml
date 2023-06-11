@@ -13,10 +13,15 @@ Window {
   property var locale: Qt.locale()
   property date currentTime: new Date()
   property string timeString
+  property string dateString
 
   function updateTime() {
     currentTime = new Date()
     timeString = currentTime.toLocaleTimeString(locale, Locale.ShortFormat)
+  }
+
+  function updateDay() {
+    dateString = new Date().toLocaleDateString(Qt.locale())
   }
 
   Row {
@@ -46,7 +51,7 @@ Window {
           color: "#8F8A8D"
           textFormat: Text.RichText
           text: "Male / <font color='#575556'>Age</font> 52&nbsp;&nbsp;&nbsp;03/18/1967"
-          font.pixelSize: 15
+          font.pixelSize: 17
         }
 
         RowLayout {
@@ -68,7 +73,7 @@ Window {
             color: "#575556"
             textFormat: Text.RichText
             text: qsTr("Condition: <font color='#8F8A8D'>&nbsp;Stable</font>")
-            font.pixelSize: 15
+            font.pixelSize: 17
           }
         }
       }
@@ -94,7 +99,7 @@ Window {
           color: "#8F8A8D"
           textFormat: Text.RichText
           text: " <font color='#575556'>Admission</font>: Feb 22, 2019 / 12:34 PM"
-          font.pixelSize: 15
+          font.pixelSize: 17
         }
 
         Text {
@@ -102,7 +107,7 @@ Window {
           color: "#8F8A8D"
           textFormat: Text.RichText
           text: " <font color='#575556'>Room</font>: 201-B2"
-          font.pixelSize: 15
+          font.pixelSize: 17
         }
       }
     }
@@ -114,19 +119,13 @@ Window {
 
       ColumnLayout {
         spacing: 5
+        LayoutMirroring.enabled: true
 
         Text {
           id: pHospitalInfo
           color: "#A49B93"
           text: "Marin General Hospital"
           font.pixelSize: 20
-        }
-
-        Text {
-          id: pTimeInfo
-          color: "#A49B93"
-          font.pixelSize: 20
-          text: timeString
         }
 
         Timer {
@@ -136,7 +135,22 @@ Window {
           repeat: true
           onTriggered: {
             window.updateTime()
+            window.updateDay()
           }
+        }
+
+        Text {
+          id: pTimeInfo
+          color: "#A49B93"
+          font.pixelSize: 17
+          text: timeString
+        }
+
+        Text {
+          id: pDayInfo
+          color: "#A49B93"
+          font.pixelSize: 17
+          text: dateString
         }
       }
     }
