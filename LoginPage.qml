@@ -84,6 +84,11 @@ Item {
       selectByMouse: true
       placeholderText: qsTr("Your username or email")
       verticalAlignment: Text.AlignVCenter
+
+      background: Rectangle {
+        radius: 15
+        color: "white"
+      }
     }
 
     TextField {
@@ -93,6 +98,11 @@ Item {
       placeholderText: qsTr("Your password")
       verticalAlignment: Text.AlignVCenter
       echoMode: TextInput.Password
+
+      background: Rectangle {
+        radius: 15
+        color: "white"
+      }
     }
 
     RowLayout {
