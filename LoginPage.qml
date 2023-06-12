@@ -3,10 +3,24 @@ import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.5
 
 Item {
+  id: window
   width: columnID.implicitWidth
   height: columnID.implicitHeight
 
   signal loginSuccess
+
+  property var locale: Qt.locale()
+  property date currentTime: new Date()
+  property string timeString
+  property string dateString
+
+  function updateTime() {
+    timeString = new Date().toLocaleTimeString(locale, Locale.ShortFormat)
+  }
+
+  function updateDay() {
+    dateString = new Date().toLocaleDateString(Qt.locale())
+  }
 
   function clearFields() {
     usernameField.clear()
@@ -28,6 +42,41 @@ Item {
     id: columnID
     anchors.centerIn: parent
     spacing: 10
+
+    Text {
+      id: pWelcome
+      color: "white"
+      font.pixelSize: 50
+      text: "Welcome !"
+      Layout.alignment: Qt.AlignHCenter
+    }
+
+    Timer {
+      id: timer
+      interval: 1000
+      running: true
+      repeat: true
+      onTriggered: {
+        window.updateTime()
+        window.updateDay()
+      }
+    }
+
+    Text {
+      id: pTimeInfo
+      color: "white"
+      font.pixelSize: 40
+      text: window.timeString
+      Layout.alignment: Qt.AlignHCenter
+    }
+
+    Text {
+      id: pDayInfo
+      color: "beige"
+      font.pixelSize: 20
+      text: window.dateString
+      Layout.alignment: Qt.AlignHCenter
+    }
 
     TextField {
       id: usernameField
