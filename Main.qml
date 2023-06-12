@@ -11,6 +11,9 @@ Window {
   visible: true
   color: "#231F20"
 
+  flags: Qt.WindowCloseButtonHint | Qt.WindowMinimizeButtonHint | Qt.CustomizeWindowHint
+         | Qt.MSWindowsFixedSizeDialogHint | Qt.WindowTitleHint
+
   property bool isFirstPagePushed: false
 
   StackView {

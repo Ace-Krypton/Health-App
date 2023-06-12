@@ -1,5 +1,6 @@
 import QtQuick
-import QtQuick.Controls
+import QtQuick.Layouts 1.3
+import QtQuick.Controls 2.5
 
 Item {
   width: columnID.implicitWidth
@@ -17,27 +18,35 @@ Item {
           ).length > 0
   }
 
-  Column {
+  ColumnLayout {
     id: columnID
     anchors.centerIn: parent
     spacing: 10
 
     TextField {
       id: usernameField
-      placeholderText: "Username"
+      Layout.fillWidth: true
+      selectByMouse: true
+      placeholderText: qsTr("Your username or email")
+      verticalAlignment: Text.AlignVCenter
     }
 
     TextField {
       id: passwordField
-      placeholderText: "Password"
+      Layout.fillWidth: true
+      selectByMouse: true
+      placeholderText: qsTr("Your password")
+      verticalAlignment: Text.AlignVCenter
       echoMode: TextInput.Password
     }
 
-    Column {
-      spacing: 10
+    RowLayout {
+      Layout.alignment: Qt.AlignHCenter
 
       Button {
-        width: passwordField.width
+        id: loginButton
+        Layout.fillWidth: true
+        Layout.margins: 10
 
         Text {
           anchors.centerIn: parent
@@ -58,7 +67,9 @@ Item {
       }
 
       Button {
-        width: passwordField.width
+        id: registerButton
+        Layout.fillWidth: true
+        Layout.margins: 10
 
         Text {
           anchors.centerIn: parent
@@ -85,6 +96,7 @@ Item {
       height: 30
       color: messageLabel.color
       border.color: "black"
+      Layout.alignment: Qt.AlignHCenter
 
       Label {
         id: messageLabel

@@ -82,6 +82,7 @@ Item {
     Rectangle {
       width: window.width / 3
       height: 100
+
       color: "#231F20"
 
       Layout.fillHeight: true
@@ -118,6 +119,7 @@ Item {
     Rectangle {
       width: window.width / 3
       height: 100
+
       color: "#231F20"
 
       Layout.fillHeight: true
@@ -164,6 +166,7 @@ Item {
     Rectangle {
       width: window.width / 3
       height: 100
+
       color: "#231F20"
 
       Layout.fillHeight: true
