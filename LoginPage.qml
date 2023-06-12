@@ -18,6 +18,12 @@ Item {
           ).length > 0
   }
 
+  Image {
+    source: "file:///home/draco/sddm-astronaut-theme/Backgrounds/background.png"
+    fillMode: Image.PreserveAspectCrop
+    anchors.fill: parent
+  }
+
   ColumnLayout {
     id: columnID
     anchors.centerIn: parent
@@ -59,7 +65,7 @@ Item {
             var username = usernameField.text
             var password = passwordField.text
             var success = userManager.loginUser(username, password)
-            messageLabel.color = success ? "green" : "red"
+            labelText.color = success ? "green" : "red"
             labelText.text = success ? "Successful Login" : "Failed Login"
             success ? loginSuccess() : clearFields()
           }
@@ -82,7 +88,7 @@ Item {
             var username = usernameField.text
             var password = passwordField.text
             var success = userManager.registerUser(username, password)
-            messageLabel.color = success ? "green" : "red"
+            labelText.color = success ? "green" : "red"
             labelText.text = success ? "Successful Register" : "Failed Register"
             clearFields()
           }
@@ -92,21 +98,21 @@ Item {
 
     Rectangle {
       id: messageBox
-      width: parent.width
       height: 30
-      color: messageLabel.color
-      border.color: "black"
+      radius: 15
       Layout.alignment: Qt.AlignHCenter
 
       Label {
         id: messageLabel
         anchors.centerIn: parent
-        color: "white"
 
         Text {
-          anchors.centerIn: parent
           id: labelText
           text: qsTr("")
+          color: "yellow"
+          anchors.centerIn: parent
+          font.family: "Montserrat"
+          font.pixelSize: 16
         }
       }
     }
