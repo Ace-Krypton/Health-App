@@ -5,39 +5,49 @@ import QtQuick.Controls.Material 2.15
 
 Item {
   id: window
-  width: applicationLayout.implicitWidth
-  height: applicationLayout.implicitHeight
-
-  property var locale: Qt.locale()
-  property date currentTime: new Date()
-  property string timeString
-  property string dateString
-
-  function updateTime() {
-    timeString = new Date().toLocaleTimeString(locale, Locale.ShortFormat)
-  }
-
-  function updateDay() {
-    dateString = new Date().toLocaleDateString(Qt.locale())
-  }
 
   GridLayout {
-    id: applicationLayout
-    columns: 4
+    id: grid
     anchors.fill: parent
-    anchors.topMargin: 20
-    anchors.leftMargin: 30
+    rows: 12
+    columns: 12
+    rowSpacing: 4
+    columnSpacing: 10
+
+    property double colMulti: grid.width / grid.columns
+    property double rowMulti: grid.height / grid.rows
+
+    property var locale: Qt.locale()
+    property date currentTime: new Date()
+    property string timeString
+    property string dateString
+
+    function updateTime() {
+      timeString = new Date().toLocaleTimeString(locale, Locale.ShortFormat)
+    }
+
+    function updateDay() {
+      dateString = new Date().toLocaleDateString(Qt.locale())
+    }
+
+    function prefWidth(item) {
+      return colMulti * item.Layout.columnSpan
+    }
+
+    function prefHeight(item) {
+      return rowMulti * item.Layout.rowSpan
+    }
 
     Rectangle {
-      width: window.width / 3
-      height: 100
       color: "#231F20"
-
-      Layout.fillHeight: true
-      Layout.fillWidth: true
+      Layout.rowSpan: 2
+      Layout.columnSpan: 3
+      Layout.preferredWidth: grid.prefWidth(this)
+      Layout.preferredHeight: grid.prefHeight(this)
 
       ColumnLayout {
         spacing: 5
+        anchors.centerIn: parent
 
         Text {
           id: pName
@@ -80,16 +90,15 @@ Item {
     }
 
     Rectangle {
-      width: window.width / 3
-      height: 100
-
       color: "#231F20"
-
-      Layout.fillHeight: true
-      Layout.fillWidth: true
+      Layout.rowSpan: 2
+      Layout.columnSpan: 4
+      Layout.preferredWidth: grid.prefWidth(this)
+      Layout.preferredHeight: grid.prefHeight(this)
 
       ColumnLayout {
         spacing: 5
+        anchors.centerIn: parent
 
         Text {
           id: pID
@@ -102,7 +111,7 @@ Item {
           id: pAdmissionDate
           color: "#8F8A8D"
           textFormat: Text.RichText
-          text: " <font color='#575556'>Admission</font>: Feb 22, 2019 / 12:34 PM"
+          text: "<font color='#575556'>Admission</font>: Feb 22, 2019 / 12:34 PM"
           font.pixelSize: 17
         }
 
@@ -110,23 +119,22 @@ Item {
           id: pRoom
           color: "#8F8A8D"
           textFormat: Text.RichText
-          text: " <font color='#575556'>Room</font>: 201-B2"
+          text: "<font color='#575556'>Room</font>: 201-B2"
           font.pixelSize: 17
         }
       }
     }
 
     Rectangle {
-      width: window.width / 3
-      height: 100
-
       color: "#231F20"
-
-      Layout.fillHeight: true
-      Layout.fillWidth: true
+      Layout.rowSpan: 2
+      Layout.columnSpan: 3
+      Layout.preferredWidth: grid.prefWidth(this)
+      Layout.preferredHeight: grid.prefHeight(this)
 
       ColumnLayout {
         spacing: 5
+        anchors.centerIn: parent
         LayoutMirroring.enabled: true
 
         Text {
@@ -142,8 +150,8 @@ Item {
           running: true
           repeat: true
           onTriggered: {
-            window.updateTime()
-            window.updateDay()
+            grid.updateTime()
+            grid.updateDay()
           }
         }
 
@@ -151,46 +159,125 @@ Item {
           id: pTimeInfo
           color: "#A49B93"
           font.pixelSize: 17
-          text: window.timeString
+          text: grid.timeString
         }
 
         Text {
           id: pDayInfo
           color: "#A49B93"
           font.pixelSize: 17
-          text: window.dateString
+          text: grid.dateString
         }
       }
     }
 
     Rectangle {
-      width: window.width / 3
-      height: 100
-
       color: "#231F20"
+      Layout.rowSpan: 2
+      Layout.columnSpan: 2
+      Layout.preferredWidth: grid.prefWidth(this)
+      Layout.preferredHeight: grid.prefHeight(this)
 
-      Layout.fillHeight: true
-      Layout.fillWidth: true
+      Button {
+        Material.background: "#231F20"
+        anchors.centerIn: parent
 
-      ColumnLayout {
-        spacing: 5
+        Image {
+          width: 60
+          height: 60
+          anchors.fill: parent
+          source: "file:///home/draco/Downloads/Untitled.png"
+        }
 
-        Button {
-          Material.background: "#231F20"
-          Layout.alignment: Qt.AlignTop | Qt.AlignVCenter
-
-          Image {
-            width: 60
-            height: 60
-            anchors.fill: parent
-            source: "file:///home/draco/Downloads/Untitled.png"
-          }
-
-          onClicked: {
-            console.log("Notification Icon Clicked")
-          }
+        onClicked: {
+          console.log("Notification Icon Clicked")
         }
       }
+    }
+
+    Rectangle {
+      color: 'yellow'
+      Layout.rowSpan: 2
+      Layout.columnSpan: 4
+      Layout.preferredWidth: grid.prefWidth(this)
+      Layout.preferredHeight: grid.prefHeight(this)
+    }
+
+    Rectangle {
+      color: 'blue'
+      Layout.row: 4
+      Layout.rowSpan: 2
+      Layout.columnSpan: 4
+      Layout.preferredWidth: grid.prefWidth(this)
+      Layout.preferredHeight: grid.prefHeight(this)
+    }
+
+    Rectangle {
+      color: 'orange'
+      Layout.row: 6
+      Layout.rowSpan: 2
+      Layout.columnSpan: 4
+      Layout.preferredWidth: grid.prefWidth(this)
+      Layout.preferredHeight: grid.prefHeight(this)
+    }
+
+    Rectangle {
+      color: 'orange'
+      Layout.row: 8
+      Layout.rowSpan: 2
+      Layout.columnSpan: 4
+      Layout.preferredWidth: grid.prefWidth(this)
+      Layout.preferredHeight: grid.prefHeight(this)
+    }
+
+    Rectangle {
+      color: 'magenta'
+      Layout.column: 4
+      Layout.row: 6
+      Layout.rowSpan: 4
+      Layout.columnSpan: 6
+      Layout.preferredWidth: grid.prefWidth(this)
+      Layout.preferredHeight: grid.prefHeight(this)
+    }
+
+    Rectangle {
+      color: 'purple'
+      Layout.column: 6
+      Layout.row: 2
+      Layout.rowSpan: 4
+      Layout.columnSpan: 2
+      Layout.preferredWidth: grid.prefWidth(this)
+      Layout.preferredHeight: grid.prefHeight(this) + 30
+    }
+
+    Rectangle {
+      color: 'purple'
+      Layout.column: 8
+      Layout.row: 2
+      Layout.rowSpan: 4
+      Layout.columnSpan: 2
+      Layout.preferredWidth: grid.prefWidth(this)
+      Layout.preferredHeight: grid.prefHeight(this) + 30
+    }
+
+    Rectangle {
+      color: 'lime'
+      Layout.column: 4
+      Layout.row: 2
+      Layout.rowSpan: 4
+      Layout.columnSpan: 2
+      Layout.preferredWidth: grid.prefWidth(this)
+      Layout.preferredHeight: grid.prefHeight(this) + 30
+    }
+
+    Rectangle {
+      color: 'red'
+      Layout.column: 10
+      Layout.row: 2
+      Layout.rowSpan: 8
+      Layout.columnSpan: 2
+      Layout.preferredWidth: grid.prefWidth(this)
+      Layout.preferredHeight: grid.prefHeight(this) + 66
     }
   }
 }
