@@ -219,19 +219,38 @@ Item {
 
             ColumnLayout {
               spacing: 3
-              anchors.fill: parent
+              Layout.fillWidth: true
+              Layout.fillHeight: true
 
               Text {
-                color: "white"
                 textFormat: Text.RichText
-                text: qsTr("<font style='font-size: 20px;'>Temperature </font>")
+                text: qsTr(
+                        "<font style='font-size: 20px; color: #8F8A8D;'>Temperature </font>")
                       + "<font style='font-size: 15px; color: #575556;'>Celsius</font>"
               }
 
-              Text {
-                color: "white"
-                text: qsTr("36.7")
-                font.pointSize: 30
+              RowLayout {
+                spacing: 20
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+
+                Text {
+                  color: "#A49B93"
+                  text: qsTr("36.7<font style='font-size: 20px;'>°</font>")
+                  font.pointSize: 30
+                }
+
+                Text {
+                  color: "#A49B93"
+                  text: qsTr("36.7<font style='font-size: 20px;'>°</font>")
+                  font.pointSize: 30
+                }
+
+                Text {
+                  color: "#A49B93"
+                  text: qsTr("36.7<font style='font-size: 20px;'>°</font>")
+                  font.pointSize: 30
+                }
               }
             }
           }
