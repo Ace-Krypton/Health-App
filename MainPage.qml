@@ -197,11 +197,46 @@ Item {
     }
 
     Rectangle {
-      color: "yellow"
+      color: "#231F20"
       Layout.rowSpan: 2
       Layout.columnSpan: 4
       Layout.preferredWidth: grid.prefWidth(this)
       Layout.preferredHeight: grid.prefHeight(this)
+
+      RowLayout {
+        anchors.fill: parent
+        spacing: 10
+
+        Item {
+          Layout.leftMargin: 40
+          width: 100
+          height: 100
+
+          Rectangle {
+            width: parent.width
+            height: parent.height
+            color: "#231F20"
+
+            ColumnLayout {
+              spacing: 3
+              anchors.fill: parent
+
+              Text {
+                color: "white"
+                textFormat: Text.RichText
+                text: qsTr("<font style='font-size: 20px;'>Temperature </font>")
+                      + "<font style='font-size: 15px; color: #575556;'>Celsius</font>"
+              }
+
+              Text {
+                color: "white"
+                text: qsTr("36.7")
+                font.pointSize: 30
+              }
+            }
+          }
+        }
+      }
     }
 
     Rectangle {
@@ -223,7 +258,7 @@ Item {
 
       RowLayout {
         anchors.fill: parent
-        spacing: 10
+        spacing: 5
 
         Item {
           Layout.leftMargin: 20
