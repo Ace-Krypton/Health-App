@@ -197,18 +197,36 @@ Item {
     }
 
     Rectangle {
+      color: "yellow"
+      Layout.rowSpan: 2
+      Layout.columnSpan: 4
+      Layout.preferredWidth: grid.prefWidth(this)
+      Layout.preferredHeight: grid.prefHeight(this)
+    }
+
+    Rectangle {
+      color: 'blue'
+      Layout.row: 4
+      Layout.rowSpan: 2
+      Layout.columnSpan: 4
+      Layout.preferredWidth: grid.prefWidth(this)
+      Layout.preferredHeight: grid.prefHeight(this)
+    }
+
+    Rectangle {
       color: "#231F20"
+      Layout.row: 6
       Layout.rowSpan: 2
       Layout.columnSpan: 4
       Layout.preferredWidth: grid.prefWidth(this)
       Layout.preferredHeight: grid.prefHeight(this)
 
       RowLayout {
-        id: mainRect
         anchors.fill: parent
         spacing: 10
 
         Item {
+          Layout.leftMargin: 20
           width: 100
           height: 100
 
@@ -218,17 +236,37 @@ Item {
             color: "#39B34B"
             radius: width * 0.5
 
-            Text {
-              text: qsTr("92")
-              color: "white"
-              anchors.centerIn: parent
-              font.pointSize: 30
+            ColumnLayout {
+              anchors.fill: parent
+              spacing: 0
+
+              Text {
+                text: qsTr("EKG")
+                color: "white"
+                Layout.alignment: Qt.AlignHCenter
+                font.pointSize: 12
+              }
+
+              Text {
+                text: qsTr("92")
+                color: "white"
+                Layout.alignment: Qt.AlignHCenter
+                font.pointSize: 32
+              }
+
+              Text {
+                text: qsTr("BMP")
+                color: "white"
+                Layout.alignment: Qt.AlignHCenter
+                font.pointSize: 12
+              }
             }
           }
         }
 
         Canvas {
-          anchors.fill: parent
+          Layout.fillWidth: true
+          Layout.fillHeight: true
           antialiasing: true
 
           onPaint: {
@@ -269,30 +307,96 @@ Item {
     }
 
     Rectangle {
-      color: 'blue'
-      Layout.row: 4
-      Layout.rowSpan: 2
-      Layout.columnSpan: 4
-      Layout.preferredWidth: grid.prefWidth(this)
-      Layout.preferredHeight: grid.prefHeight(this)
-    }
-
-    Rectangle {
-      color: 'orange'
-      Layout.row: 6
-      Layout.rowSpan: 2
-      Layout.columnSpan: 4
-      Layout.preferredWidth: grid.prefWidth(this)
-      Layout.preferredHeight: grid.prefHeight(this)
-    }
-
-    Rectangle {
-      color: 'orange'
+      color: "#231F20"
       Layout.row: 8
       Layout.rowSpan: 2
       Layout.columnSpan: 4
       Layout.preferredWidth: grid.prefWidth(this)
       Layout.preferredHeight: grid.prefHeight(this)
+
+      RowLayout {
+        anchors.fill: parent
+        spacing: 10
+
+        Item {
+          Layout.leftMargin: 20
+          width: 100
+          height: 100
+
+          Rectangle {
+            width: parent.width
+            height: parent.height
+            color: "#235F7A"
+            radius: width * 0.5
+
+            ColumnLayout {
+              anchors.fill: parent
+              spacing: 0
+
+              Text {
+                text: qsTr("Pulse")
+                color: "white"
+                Layout.alignment: Qt.AlignHCenter
+                font.pointSize: 12
+              }
+
+              Text {
+                text: qsTr("95")
+                color: "white"
+                Layout.alignment: Qt.AlignHCenter
+                font.pointSize: 32
+              }
+
+              Text {
+                text: qsTr("SpO2")
+                color: "white"
+                Layout.alignment: Qt.AlignHCenter
+                font.pointSize: 12
+              }
+            }
+          }
+        }
+
+        Canvas {
+          Layout.fillWidth: true
+          Layout.fillHeight: true
+          antialiasing: true
+
+          onPaint: {
+            var ctx = getContext("2d")
+
+            ctx.clearRect(0, 0, width, height)
+            ctx.strokeStyle = "#235F7A"
+            ctx.lineWidth = 2
+            ctx.lineCap = "square"
+
+            var centerX = width / 2
+            var centerY = height / 2
+            var amplitude = 30
+            var frequency = 28
+            var time = new Date().getTime() / 1000
+            var pointCount = 100
+            var points = []
+
+            for (var i = 0; i < pointCount; i++) {
+              var x = i / pointCount * width
+              var y = centerY + Math.sin(
+                    (x / width * frequency + time) * Math.PI * 2) * amplitude
+              points.push({
+                            "x": x,
+                            "y": y
+                          })
+            }
+
+            ctx.beginPath()
+            ctx.moveTo(points[0].x, points[0].y)
+            for (var j = 1; j < pointCount; j++) {
+              ctx.lineTo(points[j].x, points[j].y)
+            }
+            ctx.stroke()
+          }
+        }
+      }
     }
 
     Rectangle {
