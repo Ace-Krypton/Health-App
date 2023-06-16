@@ -1,12 +1,12 @@
-#include <QGuiApplication>
-#include <QQmlApplicationEngine>
 #include <QQmlContext>
+#include <QApplication>
+#include <QQuickView>
+#include <QQmlApplicationEngine>
 
 #include "usermanager.hpp"
 
-int main(int argc, char *argv[])
-{
-    QGuiApplication app(argc, argv);
+int main(int argc, char *argv[]) {
+    QApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
 

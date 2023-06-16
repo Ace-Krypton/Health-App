@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.5
 import QtQuick.Controls.Material 2.15
+import QtCharts 2.3
 
 Item {
   id: window
@@ -196,11 +197,75 @@ Item {
     }
 
     Rectangle {
-      color: 'yellow'
+      color: "#231F20"
       Layout.rowSpan: 2
       Layout.columnSpan: 4
       Layout.preferredWidth: grid.prefWidth(this)
       Layout.preferredHeight: grid.prefHeight(this)
+
+      RowLayout {
+        id: mainRect
+        anchors.fill: parent
+        spacing: 10
+
+        Item {
+          width: 100
+          height: 100
+
+          Rectangle {
+            width: parent.width
+            height: parent.height
+            color: "#39B34B"
+            radius: width * 0.5
+
+            Text {
+              text: qsTr("92")
+              color: "white"
+              anchors.centerIn: parent
+              font.pointSize: 30
+            }
+          }
+        }
+
+        Canvas {
+          anchors.fill: parent
+          antialiasing: true
+
+          onPaint: {
+            var ctx = getContext("2d")
+
+            ctx.clearRect(0, 0, width, height)
+            ctx.strokeStyle = "lime"
+            ctx.lineWidth = 2
+            ctx.lineCap = "square"
+
+            var centerX = width / 2
+            var centerY = height / 2
+            var amplitude = 30
+            var frequency = 28
+            var time = new Date().getTime() / 1000
+            var pointCount = 100
+            var points = []
+
+            for (var i = 0; i < pointCount; i++) {
+              var x = i / pointCount * width
+              var y = centerY + Math.sin(
+                    (x / width * frequency + time) * Math.PI * 2) * amplitude
+              points.push({
+                            "x": x,
+                            "y": y
+                          })
+            }
+
+            ctx.beginPath()
+            ctx.moveTo(points[0].x, points[0].y)
+            for (var j = 1; j < pointCount; j++) {
+              ctx.lineTo(points[j].x, points[j].y)
+            }
+            ctx.stroke()
+          }
+        }
+      }
     }
 
     Rectangle {

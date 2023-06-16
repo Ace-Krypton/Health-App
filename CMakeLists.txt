@@ -4,7 +4,7 @@ project(HealthAppDEMO VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 6.4 REQUIRED COMPONENTS Quick)
+find_package(Qt6 6.4 REQUIRED COMPONENTS Quick Widgets)
 
 qt_standard_project_setup()
 
@@ -20,6 +20,7 @@ qt_add_qml_module(appHealthAppDEMO
     QML_FILES Main.qml
     LoginPage.qml
     MainPage.qml
+    HeatBeat.qml
 )
 
 set_target_properties(appHealthAppDEMO PROPERTIES
@@ -32,6 +33,7 @@ set_target_properties(appHealthAppDEMO PROPERTIES
 
 target_link_libraries(appHealthAppDEMO
     PRIVATE Qt6::Quick
+    PRIVATE Qt6::Widgets
 )
 
 install(TARGETS appHealthAppDEMO
