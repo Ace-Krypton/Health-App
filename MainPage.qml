@@ -317,7 +317,7 @@ Item {
                     color: "#A49B93"
                     text: qsTr("120")
                     font.pointSize: 80
-                    Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+                    Layout.alignment: Qt.AlignLeft | Qt.AlignTop
                   }
                 }
 
@@ -379,7 +379,7 @@ Item {
         spacing: 5
 
         Item {
-          Layout.leftMargin: 20
+          Layout.leftMargin: 40
           width: 100
           height: 100
 
@@ -472,7 +472,7 @@ Item {
         spacing: 10
 
         Item {
-          Layout.leftMargin: 20
+          Layout.leftMargin: 40
           width: 100
           height: 100
 
@@ -553,17 +553,158 @@ Item {
     }
 
     Rectangle {
-      color: 'magenta'
+      color: "#231F20"
       Layout.column: 4
       Layout.row: 6
       Layout.rowSpan: 4
       Layout.columnSpan: 6
       Layout.preferredWidth: grid.prefWidth(this)
       Layout.preferredHeight: grid.prefHeight(this)
+
+      RowLayout {
+        anchors.fill: parent
+        spacing: 10
+
+        Item {
+          Layout.leftMargin: 20
+          width: 160
+          height: 160
+
+          Rectangle {
+            width: parent.width
+            height: parent.height
+            color: "#652D90"
+            radius: width * 0.5
+
+            ColumnLayout {
+              anchors.fill: parent
+              spacing: 0
+
+              Text {
+                text: qsTr("Insulin Pump")
+                color: "white"
+                Layout.alignment: Qt.AlignHCenter
+                font.pointSize: 12
+              }
+
+              Text {
+                text: qsTr("0.65")
+                color: "white"
+                Layout.alignment: Qt.AlignHCenter
+                font.pointSize: 32
+              }
+
+              Text {
+                text: qsTr("U/Hr")
+                color: "white"
+                Layout.alignment: Qt.AlignHCenter
+                font.pointSize: 12
+              }
+            }
+          }
+        }
+
+        Rectangle {
+          width: 100
+          height: 100
+          color: "#231F20"
+
+          ColumnLayout {
+            anchors.fill: parent
+            spacing: 0
+
+            Text {
+              color: "#A49B93"
+              text: qsTr("Last Bolus")
+              font.pointSize: 12
+              Layout.alignment: Qt.AlignLeft
+            }
+
+            Text {
+              color: "#A49B93"
+              text: qsTr("3.0")
+              font.pointSize: 40
+              Layout.alignment: Qt.AlignLeft
+            }
+
+            Text {
+              color: "#575556"
+              text: qsTr("U")
+              font.pointSize: 12
+              Layout.alignment: Qt.AlignLeft
+            }
+          }
+        }
+
+        Rectangle {
+          width: 100
+          height: 100
+          color: "#231F20"
+
+          ColumnLayout {
+            anchors.fill: parent
+            spacing: 0
+
+            Text {
+              color: "#A49B93"
+              text: qsTr("IOB")
+              font.pointSize: 12
+              Layout.alignment: Qt.AlignLeft
+            }
+
+            Text {
+              color: "#A49B93"
+              text: qsTr("2.3")
+              font.pointSize: 40
+              Layout.alignment: Qt.AlignLeft
+            }
+
+            Text {
+              color: "#575556"
+              text: qsTr("U")
+              font.pointSize: 12
+              Layout.alignment: Qt.AlignLeft
+            }
+          }
+        }
+
+        Rectangle {
+          width: 100
+          height: 100
+          color: "#231F20"
+
+          ColumnLayout {
+            anchors.fill: parent
+            spacing: 0
+
+            Text {
+              color: "#A49B93"
+              text: qsTr("Glucose")
+              font.pointSize: 12
+              Layout.alignment: Qt.AlignLeft
+            }
+
+            Text {
+              color: "#A49B93"
+              text: qsTr("130")
+              font.pointSize: 40
+              Layout.alignment: Qt.AlignLeft
+            }
+
+            Text {
+              color: "#575556"
+              text: qsTr("Mg/DL")
+              font.pointSize: 12
+              Layout.alignment: Qt.AlignLeft
+            }
+          }
+        }
+      }
     }
 
     Rectangle {
-      color: 'purple'
+      color: "#231F20"
+      //      color: 'purple'
       Layout.column: 6
       Layout.row: 2
       Layout.rowSpan: 4
@@ -573,7 +714,8 @@ Item {
     }
 
     Rectangle {
-      color: 'purple'
+      color: "#231F20"
+      //      color: 'purple'
       Layout.column: 8
       Layout.row: 2
       Layout.rowSpan: 4
@@ -583,7 +725,8 @@ Item {
     }
 
     Rectangle {
-      color: 'lime'
+      color: "#231F20"
+      //      color: 'lime'
       Layout.column: 4
       Layout.row: 2
       Layout.rowSpan: 4
@@ -593,7 +736,8 @@ Item {
     }
 
     Rectangle {
-      color: 'red'
+      color: "#231F20"
+      //      color: 'red'
       Layout.column: 10
       Layout.row: 2
       Layout.rowSpan: 8
