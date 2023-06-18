@@ -19,8 +19,7 @@ ApplicationWindow {
   StackView {
     id: stackView
     anchors.fill: parent
-    //initialItem: loginPageComponent
-    initialItem: mainPageComponent
+    initialItem: loginPageComponent
 
     Component {
       id: loginPageComponent
@@ -35,11 +34,6 @@ ApplicationWindow {
     Component {
       id: mainPageComponent
       MainPage {}
-    }
-
-    Component {
-      id: lolComponent
-      HeatBeat {}
     }
   }
 }

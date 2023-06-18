@@ -20,7 +20,6 @@ qt_add_qml_module(appHealthAppDEMO
     QML_FILES Main.qml
     LoginPage.qml
     MainPage.qml
-    HeatBeat.qml
 )
 
 set_target_properties(appHealthAppDEMO PROPERTIES
