@@ -6,8 +6,8 @@ import QtQuick.Controls.Material 2.15
 
 ApplicationWindow {
   id: window
-  width: 644
-  height: 480
+  width: 1221
+  height: 674
   visible: true
   color: "#231F20"
 

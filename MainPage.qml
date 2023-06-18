@@ -201,7 +201,7 @@ Item {
       Layout.rowSpan: 2
       Layout.columnSpan: 4
       Layout.preferredWidth: grid.prefWidth(this)
-      Layout.preferredHeight: grid.prefHeight(this)
+      Layout.preferredHeight: grid.prefHeight(this) - 30
 
       RowLayout {
         anchors.fill: parent
@@ -236,20 +236,23 @@ Item {
 
                 Text {
                   color: "#A49B93"
-                  text: qsTr("36.7<font style='font-size: 20px;'>°</font>")
+                  text: qsTr("36.7°")
                   font.pointSize: 30
                 }
 
                 Text {
                   color: "#A49B93"
-                  text: qsTr("36.7<font style='font-size: 20px;'>°</font>")
+                  text: qsTr("37.4°")
                   font.pointSize: 30
                 }
 
                 Text {
+                  textFormat: Text.RichText
                   color: "#A49B93"
-                  text: qsTr("36.7<font style='font-size: 20px;'>°</font>")
-                  font.pointSize: 30
+                  text: qsTr(
+                          "<font style='font-size: 17px; color: #575556;'>Highest </font>
+<font style='font-size: 25px; color: #8B8D90;'>&nbsp;39.2</font>
+<font style='font-size: 25px; color: #8B8D90;'>°</font>")
                 }
               }
             }
@@ -259,12 +262,108 @@ Item {
     }
 
     Rectangle {
-      color: 'blue'
+      id: pressureID
+      color: "#231F20"
       Layout.row: 4
       Layout.rowSpan: 2
       Layout.columnSpan: 4
       Layout.preferredWidth: grid.prefWidth(this)
-      Layout.preferredHeight: grid.prefHeight(this)
+      Layout.preferredHeight: grid.prefHeight(this) + 30
+
+      RowLayout {
+        anchors.fill: parent
+        spacing: 10
+
+        Item {
+          Layout.leftMargin: 40
+          width: 200
+          height: 200
+
+          Rectangle {
+            width: parent.width
+            height: parent.height
+            color: "#231F20"
+
+            ColumnLayout {
+              spacing: 3
+              Layout.fillWidth: true
+              Layout.fillHeight: true
+
+              Text {
+                textFormat: Text.RichText
+                text: qsTr(
+                        "<font style='font-size: 18px; color: #8F8A8D;'>Blood Pressure </font>")
+                      + "<font style='font-size: 15px; color: #575556;'>mmHg</font>"
+              }
+
+              RowLayout {
+                spacing: 20
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+
+                ColumnLayout {
+                  spacing: 0
+                  Layout.fillWidth: true
+                  Layout.fillHeight: true
+
+                  Text {
+                    color: "#575556"
+                    text: qsTr("SYS")
+                    font.pointSize: 10
+                    Layout.alignment: Qt.AlignLeft | Qt.AlignBottom
+                  }
+
+                  Text {
+                    color: "#A49B93"
+                    text: qsTr("120")
+                    font.pointSize: 80
+                    Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+                  }
+                }
+
+                ColumnLayout {
+                  spacing: 0
+                  Layout.fillWidth: true
+                  Layout.fillHeight: true
+
+                  Text {
+                    color: "#575556"
+                    text: qsTr("")
+                    font.pointSize: 10
+                  }
+
+                  Text {
+                    color: "#575556"
+                    text: qsTr("/")
+                    font.pointSize: 80
+                    Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
+                  }
+                }
+
+                ColumnLayout {
+                  spacing: 0
+                  Layout.fillWidth: true
+                  Layout.fillHeight: true
+
+                  Text {
+                    color: "#575556"
+                    text: qsTr("DIA")
+                    font.pointSize: 10
+                    Layout.alignment: Qt.AlignLeft | Qt.AlignBottom
+                  }
+
+                  Text {
+                    color: "#A49B93"
+                    text: qsTr("78")
+                    font.pointSize: 80
+                    Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
 
     Rectangle {
