@@ -179,19 +179,29 @@ Item {
       Layout.preferredWidth: grid.prefWidth(this)
       Layout.preferredHeight: grid.prefHeight(this)
 
-      Button {
-        Material.background: "#231F20"
-        anchors.centerIn: parent
+      ColumnLayout {
+        Layout.fillWidth: true
+        Layout.fillHeight: true
 
-        Image {
-          width: 60
-          height: 60
-          anchors.fill: parent
-          source: "file:///home/draco/Downloads/Untitled.png"
+        Item {
+          Layout.preferredHeight: 20
         }
 
-        onClicked: {
-          console.log("Notification Icon Clicked")
+        Button {
+          Material.background: "#231F20"
+          Layout.alignment: Qt.AlignCenter
+          Layout.leftMargin: 30
+
+          Image {
+            width: 60
+            height: 60
+            anchors.fill: parent
+            source: "file:///home/draco/Downloads/Untitled.png"
+          }
+
+          onClicked: {
+            console.log("Notification Icon Clicked")
+          }
         }
       }
     }
@@ -704,7 +714,6 @@ Item {
 
     Rectangle {
       color: "#231F20"
-      //      color: 'purple'
       Layout.column: 6
       Layout.row: 2
       Layout.rowSpan: 4
@@ -738,7 +747,6 @@ Item {
 
     Rectangle {
       color: "#231F20"
-      //      color: 'purple'
       Layout.column: 8
       Layout.row: 2
       Layout.rowSpan: 4
@@ -773,7 +781,6 @@ Item {
 
     Rectangle {
       color: "#231F20"
-      //      color: 'lime'
       Layout.column: 4
       Layout.row: 2
       Layout.rowSpan: 4
@@ -807,13 +814,86 @@ Item {
 
     Rectangle {
       color: "#231F20"
-      //      color: 'red'
       Layout.column: 10
       Layout.row: 2
       Layout.rowSpan: 8
       Layout.columnSpan: 2
       Layout.preferredWidth: grid.prefWidth(this)
       Layout.preferredHeight: grid.prefHeight(this) + 66
+
+      ColumnLayout {
+        Layout.fillWidth: true
+        Layout.fillHeight: true
+        spacing: 70
+
+        Button {
+          Material.background: "#231F20"
+          Layout.alignment: Qt.AlignCenter
+          Layout.leftMargin: 30
+
+          Image {
+            width: 60
+            height: 60
+            anchors.fill: parent
+            source: "file:///home/draco/Downloads/heart-pulse-solid(1).svg"
+          }
+
+          onClicked: {
+            console.log("Notification Icon Clicked")
+          }
+        }
+
+        Button {
+          Material.background: "#231F20"
+          Layout.alignment: Qt.AlignCenter
+          Layout.leftMargin: 30
+
+          Image {
+            width: 60
+            height: 60
+            anchors.fill: parent
+            source: "file:///home/draco/Downloads/calendar-days-regular.svg"
+          }
+
+          onClicked: {
+            console.log("Notification Icon Clicked")
+          }
+        }
+
+        Button {
+          Material.background: "#231F20"
+          Layout.alignment: Qt.AlignCenter
+          Layout.leftMargin: 30
+
+          Image {
+            width: 60
+            height: 60
+            anchors.fill: parent
+            source: "file:///home/draco/Downloads/clock-rotate-left-solid.svg"
+          }
+
+          onClicked: {
+            console.log("Notification Icon Clicked")
+          }
+        }
+
+        Button {
+          Material.background: "#231F20"
+          Layout.alignment: Qt.AlignCenter
+          Layout.leftMargin: 30
+
+          Image {
+            width: 60
+            height: 60
+            anchors.fill: parent
+            source: "file:///home/draco/Downloads/headset-solid.svg"
+          }
+
+          onClicked: {
+            console.log("Notification Icon Clicked")
+          }
+        }
+      }
     }
   }
 }
