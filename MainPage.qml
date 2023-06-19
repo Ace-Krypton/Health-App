@@ -193,8 +193,8 @@ Item {
           Layout.leftMargin: 30
 
           Image {
-            width: 60
-            height: 60
+            width: 40
+            height: 40
             anchors.fill: parent
             source: "file:///home/draco/Downloads/iconizer-envelope-solid.svg"
           }
@@ -824,7 +824,7 @@ Item {
       ColumnLayout {
         Layout.fillWidth: true
         Layout.fillHeight: true
-        spacing: 50
+        spacing: 45
 
         Button {
           Material.background: "#231F20"
@@ -832,8 +832,8 @@ Item {
           Layout.leftMargin: 30
 
           Image {
-            width: 60
-            height: 60
+            width: 40
+            height: 40
             anchors.fill: parent
             source: "file:///home/draco/Downloads/iconizer-heart-pulse-solid.svg"
           }
@@ -849,8 +849,8 @@ Item {
           Layout.leftMargin: 30
 
           Image {
-            width: 60
-            height: 60
+            width: 40
+            height: 40
             anchors.fill: parent
             source: "file:///home/draco/Downloads/iconizer-calendar-days-regular"
           }
@@ -866,8 +866,8 @@ Item {
           Layout.leftMargin: 30
 
           Image {
-            width: 60
-            height: 60
+            width: 40
+            height: 40
             anchors.fill: parent
             source: "file:///home/draco/Downloads/iconizer-clock-rotate-left-solid.svg"
           }
@@ -883,8 +883,8 @@ Item {
           Layout.leftMargin: 30
 
           Image {
-            width: 60
-            height: 60
+            width: 40
+            height: 40
             anchors.fill: parent
             source: "file:///home/draco/Downloads/iconizer-headset-solid.svg"
           }
@@ -900,8 +900,8 @@ Item {
           Layout.leftMargin: 30
 
           Image {
-            width: 60
-            height: 60
+            width: 40
+            height: 40
             anchors.fill: parent
             source: "file:///home/draco/Downloads/iconizer-address-card-solid.svg"
           }
