@@ -196,7 +196,7 @@ Item {
             width: 60
             height: 60
             anchors.fill: parent
-            source: "file:///home/draco/Downloads/Untitled.png"
+            source: "file:///home/draco/Downloads/iconizer-envelope-solid.svg"
           }
 
           onClicked: {
@@ -824,7 +824,7 @@ Item {
       ColumnLayout {
         Layout.fillWidth: true
         Layout.fillHeight: true
-        spacing: 70
+        spacing: 50
 
         Button {
           Material.background: "#231F20"
@@ -835,11 +835,11 @@ Item {
             width: 60
             height: 60
             anchors.fill: parent
-            source: "file:///home/draco/Downloads/heart-pulse-solid(1).svg"
+            source: "file:///home/draco/Downloads/iconizer-heart-pulse-solid.svg"
           }
 
           onClicked: {
-            console.log("Notification Icon Clicked")
+            console.log("Vitals Icon Clicked")
           }
         }
 
@@ -852,11 +852,11 @@ Item {
             width: 60
             height: 60
             anchors.fill: parent
-            source: "file:///home/draco/Downloads/calendar-days-regular.svg"
+            source: "file:///home/draco/Downloads/iconizer-calendar-days-regular"
           }
 
           onClicked: {
-            console.log("Notification Icon Clicked")
+            console.log("Calendar Icon Clicked")
           }
         }
 
@@ -869,11 +869,11 @@ Item {
             width: 60
             height: 60
             anchors.fill: parent
-            source: "file:///home/draco/Downloads/clock-rotate-left-solid.svg"
+            source: "file:///home/draco/Downloads/iconizer-clock-rotate-left-solid.svg"
           }
 
           onClicked: {
-            console.log("Notification Icon Clicked")
+            console.log("History Icon Clicked")
           }
         }
 
@@ -886,11 +886,28 @@ Item {
             width: 60
             height: 60
             anchors.fill: parent
-            source: "file:///home/draco/Downloads/headset-solid.svg"
+            source: "file:///home/draco/Downloads/iconizer-headset-solid.svg"
           }
 
           onClicked: {
-            console.log("Notification Icon Clicked")
+            console.log("Support Icon Clicked")
+          }
+        }
+
+        Button {
+          Material.background: "#231F20"
+          Layout.alignment: Qt.AlignCenter
+          Layout.leftMargin: 30
+
+          Image {
+            width: 60
+            height: 60
+            anchors.fill: parent
+            source: "file:///home/draco/Downloads/iconizer-address-card-solid.svg"
+          }
+
+          onClicked: {
+            console.log("Hospital Patients Icon Clicked")
           }
         }
       }
