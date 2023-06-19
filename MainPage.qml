@@ -711,6 +711,29 @@ Item {
       Layout.columnSpan: 2
       Layout.preferredWidth: grid.prefWidth(this)
       Layout.preferredHeight: grid.prefHeight(this) + 30
+
+      Item {
+        id: hicor
+        width: 40
+        height: parent.height
+        anchors.centerIn: parent
+
+        property int totalParts: 26
+        property int filledParts: 8
+        property int spacing: 5
+
+        Repeater {
+          model: hicor.totalParts
+
+          Rectangle {
+            width: parent.width
+            height: (parent.height - (hicor.totalParts - 1) * hicor.spacing) / hicor.totalParts
+            color: index < hicor.filledParts ? "#A49B93" : "#575556"
+            border.color: "#231F20"
+            y: parent.height - height * (index + 1) - index * hicor.spacing
+          }
+        }
+      }
     }
 
     Rectangle {
@@ -722,6 +745,30 @@ Item {
       Layout.columnSpan: 2
       Layout.preferredWidth: grid.prefWidth(this)
       Layout.preferredHeight: grid.prefHeight(this) + 30
+
+      Item {
+        id: glucagon
+        width: 40
+        height: parent.height
+        anchors.centerIn: parent
+
+        property int totalParts: 26
+        property int filledParts: 11
+        property int spacing: 5
+
+        Repeater {
+          model: glucagon.totalParts
+
+          Rectangle {
+            width: parent.width
+            height: (parent.height - (glucagon.totalParts - 1)
+                     * glucagon.spacing) / glucagon.totalParts
+            color: index < glucagon.filledParts ? "#A49B93" : "#575556"
+            border.color: "#231F20"
+            y: parent.height - height * (index + 1) - index * glucagon.spacing
+          }
+        }
+      }
     }
 
     Rectangle {
@@ -733,6 +780,29 @@ Item {
       Layout.columnSpan: 2
       Layout.preferredWidth: grid.prefWidth(this)
       Layout.preferredHeight: grid.prefHeight(this) + 30
+
+      Item {
+        id: saline
+        width: 40
+        height: parent.height
+        anchors.centerIn: parent
+
+        property int totalParts: 26
+        property int filledParts: 14
+        property int spacing: 5
+
+        Repeater {
+          model: saline.totalParts
+
+          Rectangle {
+            width: parent.width
+            height: (parent.height - (saline.totalParts - 1) * saline.spacing) / saline.totalParts
+            color: index < saline.filledParts ? "#A49B93" : "#575556"
+            border.color: "#231F20"
+            y: parent.height - height * (index + 1) - index * saline.spacing
+          }
+        }
+      }
     }
 
     Rectangle {

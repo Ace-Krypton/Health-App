@@ -32,16 +32,14 @@ Item {
           ).length > 0
   }
 
-  Image {
-    source: "file:///home/draco/sddm-astronaut-theme/Backgrounds/background.png"
-    fillMode: Image.PreserveAspectCrop
-    anchors.fill: parent
-  }
-
   ColumnLayout {
-    id: columnID
-    anchors.centerIn: parent
+    anchors.horizontalCenter: parent.horizontalCenter
+    anchors.top: parent.top
     spacing: 10
+
+    Item {
+      Layout.preferredHeight: 30
+    }
 
     Text {
       id: pWelcome
@@ -77,6 +75,12 @@ Item {
       text: window.dateString
       Layout.alignment: Qt.AlignHCenter
     }
+  }
+
+  ColumnLayout {
+    id: columnID
+    anchors.centerIn: parent
+    spacing: 10
 
     TextField {
       id: usernameField
