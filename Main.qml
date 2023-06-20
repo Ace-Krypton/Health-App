@@ -19,7 +19,7 @@ ApplicationWindow {
   StackView {
     id: stackView
     anchors.fill: parent
-    initialItem: mainPageComponent
+    initialItem: loginPageComponent
 
     Component {
       id: loginPageComponent

@@ -725,7 +725,7 @@ Item {
         id: hicor
         width: 40
         height: parent.height
-        anchors.centerIn: parent
+        x: 55
 
         property int totalParts: 26
         property int filledParts: 8
@@ -740,6 +740,27 @@ Item {
             color: index < hicor.filledParts ? "#A49B93" : "#575556"
             border.color: "#231F20"
             y: parent.height - height * (index + 1) - index * hicor.spacing
+          }
+        }
+      }
+
+      Item {
+        width: 40
+        height: parent.height
+        anchors.left: hicor.right
+        anchors.leftMargin: 10
+
+        ColumnLayout {
+          Text {
+            color: "#8F8A8D"
+            text: qsTr("Hi-Cor")
+            font.pointSize: 18
+          }
+
+          Text {
+            color: "#8F8A8D"
+            text: qsTr("25 %")
+            font.pointSize: 30
           }
         }
       }
@@ -758,7 +779,7 @@ Item {
         id: glucagon
         width: 40
         height: parent.height
-        anchors.centerIn: parent
+        x: 20
 
         property int totalParts: 26
         property int filledParts: 11
@@ -774,6 +795,27 @@ Item {
             color: index < glucagon.filledParts ? "#A49B93" : "#575556"
             border.color: "#231F20"
             y: parent.height - height * (index + 1) - index * glucagon.spacing
+          }
+        }
+      }
+
+      Item {
+        width: 40
+        height: parent.height
+        anchors.left: glucagon.right
+        anchors.leftMargin: 10
+
+        ColumnLayout {
+          Text {
+            color: "#8F8A8D"
+            text: qsTr("Glucagon")
+            font.pointSize: 18
+          }
+
+          Text {
+            color: "#8F8A8D"
+            text: qsTr("45 %")
+            font.pointSize: 30
           }
         }
       }
@@ -807,6 +849,27 @@ Item {
             color: index < saline.filledParts ? "#A49B93" : "#575556"
             border.color: "#231F20"
             y: parent.height - height * (index + 1) - index * saline.spacing
+          }
+        }
+      }
+
+      Item {
+        width: 40
+        height: parent.height
+        anchors.left: saline.right
+        anchors.leftMargin: 10
+
+        ColumnLayout {
+          Text {
+            color: "#8F8A8D"
+            text: qsTr("Saline")
+            font.pointSize: 18
+          }
+
+          Text {
+            color: "#8F8A8D"
+            text: qsTr("55 %")
+            font.pointSize: 30
           }
         }
       }
