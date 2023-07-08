@@ -7,6 +7,8 @@ import QtCharts 2.3
 Item {
   id: window
 
+  signal patientsPage
+
   GridLayout {
     id: grid
     anchors.fill: parent
@@ -971,6 +973,7 @@ Item {
 
           onClicked: {
             console.log("Hospital Patients Icon Clicked")
+            patientsPage()
           }
         }
       }

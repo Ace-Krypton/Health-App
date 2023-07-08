@@ -54,6 +54,7 @@ Item {
       interval: 1000
       running: true
       repeat: true
+
       onTriggered: {
         window.updateTime()
         window.updateDay()

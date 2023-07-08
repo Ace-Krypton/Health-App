@@ -33,7 +33,18 @@ ApplicationWindow {
 
     Component {
       id: mainPageComponent
-      MainPage {}
+
+      MainPage {
+        onPatientsPage: {
+          stackView.replace(mainPageComponent, patientPageComponent)
+        }
+      }
+    }
+
+    Component {
+      id: patientPageComponent
+
+      PatientPage {}
     }
   }
 }
