@@ -20,6 +20,19 @@ Item {
     property double colMulti: grid.width / grid.columns
     property double rowMulti: grid.height / grid.rows
 
+    property var locale: Qt.locale()
+    property date currentTime: new Date()
+    property string timeString
+    property string dateString
+
+    function updateTime() {
+      timeString = new Date().toLocaleTimeString(locale, Locale.ShortFormat)
+    }
+
+    function updateDay() {
+      dateString = new Date().toLocaleDateString(Qt.locale())
+    }
+
     function prefWidth(item) {
       return colMulti * item.Layout.columnSpan
     }
@@ -29,25 +42,91 @@ Item {
     }
 
     Rectangle {
-      color: "blue"
+      color: "#231F20"
       Layout.rowSpan: 2
       Layout.columnSpan: 3
       Layout.preferredWidth: grid.prefWidth(this)
       Layout.preferredHeight: grid.prefHeight(this)
+
+      ColumnLayout {
+        spacing: 5
+        anchors.centerIn: parent
+
+        Text {
+          id: pName
+          color: "#A49B93"
+          text: qsTr("Patients")
+          font.pixelSize: 20
+        }
+
+        Text {
+          id: pData
+          color: "#8F8A8D"
+          textFormat: Text.RichText
+          text: "Emergency and Cardio Dep."
+          font.pixelSize: 17
+        }
+
+        Text {
+          id: pCount
+          color: "#8F8A8D"
+          textFormat: Text.RichText
+          text: qsTr("<font color='#8F8A8D'>Total Admitted:</font> 208")
+          font.pixelSize: 17
+        }
+      }
     }
 
     Rectangle {
-      color: "blue"
+      color: "#231F20"
       Layout.rowSpan: 2
       Layout.column: 9
       Layout.columnSpan: 3
       Layout.alignment: Qt.AlignRight
       Layout.preferredWidth: grid.prefWidth(this)
       Layout.preferredHeight: grid.prefHeight(this)
+
+      ColumnLayout {
+        spacing: 5
+        anchors.centerIn: parent
+        LayoutMirroring.enabled: true
+
+        Text {
+          id: pHospitalInfo
+          color: "#A49B93"
+          text: "Marin General Hospital"
+          font.pixelSize: 20
+        }
+
+        Timer {
+          id: timer
+          interval: 1000
+          running: true
+          repeat: true
+          onTriggered: {
+            grid.updateTime()
+            grid.updateDay()
+          }
+        }
+
+        Text {
+          id: pTimeInfo
+          color: "#A49B93"
+          font.pixelSize: 17
+          text: grid.timeString
+        }
+
+        Text {
+          id: pDayInfo
+          color: "#A49B93"
+          font.pixelSize: 17
+          text: grid.dateString
+        }
+      }
     }
 
     Rectangle {
-      color: "black"
+      color: "#231F20"
       Layout.row: 2
       Layout.rowSpan: 10
       Layout.columnSpan: 12
