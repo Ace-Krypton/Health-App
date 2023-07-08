@@ -54,46 +54,53 @@ Item {
       Layout.preferredWidth: grid.prefWidth(this)
       Layout.preferredHeight: grid.prefHeight(this) - 11
 
-      ListView {
-        anchors.fill: parent
+      Item {
+        width: parent.width
+        height: parent.height
 
-        model: ListModel {
-          ListElement {
-            text: "Item 1"
+        ListView {
+          id: listView
+          anchors.fill: parent
+          clip: true
+
+          model: ListModel {
+            ListElement {
+              text: "Item 1"
+            }
+
+            ListElement {
+              text: "Item 2"
+            }
+
+            ListElement {
+              text: "Item 3"
+            }
+
+            ListElement {
+              text: "Item 4"
+            }
+
+            ListElement {
+              text: "Item 5"
+            }
           }
 
-          ListElement {
-            text: "Item 2"
-          }
+          delegate: Item {
+            width: listView.width
+            height: listView.height / listView.model.count
 
-          ListElement {
-            text: "Item 3"
-          }
+            Rectangle {
+              width: parent.width
+              height: parent.height
+              color: "transparent"
+              border.color: "white"
+              border.width: 1
 
-          ListElement {
-            text: "Item 4"
-          }
-
-          ListElement {
-            text: "Item 5"
-          }
-        }
-
-        delegate: Item {
-          width: parent.width
-          height: grid.prefHeight(this) - 11
-
-          Rectangle {
-            width: parent.width
-            height: parent.height
-            color: "transparent"
-            border.color: "white"
-            border.width: 1
-
-            Text {
-              text: model.text
-              color: "white"
-              anchors.centerIn: parent
+              Text {
+                text: model.text
+                color: "white"
+                anchors.centerIn: parent
+              }
             }
           }
         }
