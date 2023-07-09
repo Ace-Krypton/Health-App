@@ -38,73 +38,64 @@ Item {
     source: "file:///home/draco/Downloads/background.png"
   }
 
-  Shape {
-    width: parent.width / 2
-    height: parent.height
+  //  Shape {
+  //    width: parent.width / 2
+  //    height: parent.height
 
-    ShapePath {
-      strokeWidth: 4
-      strokeColor: "#231F20"
-      fillGradient: LinearGradient {
+  //    ShapePath {
+  //      strokeWidth: 4
+  //      strokeColor: "#231F20"
+  //      fillGradient: LinearGradient {
 
-        GradientStop {
-          position: 0
-          color: "#231F20"
-        }
+  //        GradientStop {
+  //          position: 0
+  //          color: "#231F20"
+  //        }
 
-        GradientStop {
-          position: 0.2
-          color: "#231F20"
-        }
+  //        GradientStop {
+  //          position: 0.2
+  //          color: "#231F20"
+  //        }
 
-        GradientStop {
-          position: 0.4
-          color: "#231F20"
-        }
+  //        GradientStop {
+  //          position: 0.4
+  //          color: "#231F20"
+  //        }
 
-        GradientStop {
-          position: 0.6
-          color: "#231F20"
-        }
+  //        GradientStop {
+  //          position: 0.6
+  //          color: "#231F20"
+  //        }
 
-        GradientStop {
-          position: 1
-          color: "#231F20"
-        }
-      }
+  //        GradientStop {
+  //          position: 1
+  //          color: "#231F20"
+  //        }
+  //      }
 
-      PathLine {
-        x: window.width - 100
-        y: window.height
-      }
+  //      PathLine {
+  //        x: window.width - 100
+  //        y: window.height
+  //      }
 
-      PathLine {
-        x: 0
-        y: window.height
-      }
+  //      PathLine {
+  //        x: 0
+  //        y: window.height
+  //      }
 
-      PathLine {
-        x: 0
-        y: 0
-      }
-    }
-  }
-
+  //      PathLine {
+  //        x: 0
+  //        y: 0
+  //      }
+  //    }
+  //  }
   ColumnLayout {
-    anchors.horizontalCenter: parent.horizontalCenter
+    x: 110
     anchors.top: parent.top
     spacing: 10
 
     Item {
-      Layout.preferredHeight: 30
-    }
-
-    Text {
-      id: pWelcome
-      color: "white"
-      font.pixelSize: 50
-      text: "Welcome !"
-      Layout.alignment: Qt.AlignHCenter
+      Layout.preferredHeight: 220
     }
 
     Timer {
@@ -138,7 +129,8 @@ Item {
 
   ColumnLayout {
     id: columnID
-    anchors.centerIn: parent
+    x: 100
+    y: window.height / 2 + 40
     spacing: 10
 
     TextField {
