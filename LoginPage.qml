@@ -35,7 +35,7 @@ Item {
 
   Image {
     anchors.fill: parent
-    source: "file:///home/draco/Downloads/UG0h2T.png"
+    source: "file:///home/draco/Downloads/background.png"
   }
 
   Shape {
@@ -51,18 +51,22 @@ Item {
           position: 0
           color: "#231F20"
         }
+
         GradientStop {
           position: 0.2
           color: "#231F20"
         }
+
         GradientStop {
           position: 0.4
           color: "#231F20"
         }
+
         GradientStop {
           position: 0.6
           color: "#231F20"
         }
+
         GradientStop {
           position: 1
           color: "#231F20"
@@ -70,7 +74,7 @@ Item {
       }
 
       PathLine {
-        x: window.width
+        x: window.width - 100
         y: window.height
       }
 
