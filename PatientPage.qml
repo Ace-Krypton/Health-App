@@ -144,23 +144,23 @@ Item {
 
           model: ListModel {
             ListElement {
-              text: "Item 1"
+              text: "Patient 1"
             }
 
             ListElement {
-              text: "Item 2"
+              text: "Patient 2"
             }
 
             ListElement {
-              text: "Item 3"
+              text: "Patient 3"
             }
 
             ListElement {
-              text: "Item 4"
+              text: "Patient 4"
             }
 
             ListElement {
-              text: "Item 5"
+              text: "Patient 5"
             }
           }
 

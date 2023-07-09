@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Shapes 1.5
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.5
 
@@ -30,6 +31,59 @@ Item {
   function validateFields() {
     return usernameField.text.trim().length > 0 && passwordField.text.trim(
           ).length > 0
+  }
+
+  Image {
+    anchors.fill: parent
+    source: "file:///home/draco/Downloads/UG0h2T.png"
+  }
+
+  Shape {
+    width: parent.width / 2
+    height: parent.height
+
+    ShapePath {
+      strokeWidth: 4
+      strokeColor: "#231F20"
+      fillGradient: LinearGradient {
+
+        GradientStop {
+          position: 0
+          color: "#231F20"
+        }
+        GradientStop {
+          position: 0.2
+          color: "#231F20"
+        }
+        GradientStop {
+          position: 0.4
+          color: "#231F20"
+        }
+        GradientStop {
+          position: 0.6
+          color: "#231F20"
+        }
+        GradientStop {
+          position: 1
+          color: "#231F20"
+        }
+      }
+
+      PathLine {
+        x: window.width
+        y: window.height
+      }
+
+      PathLine {
+        x: 0
+        y: window.height
+      }
+
+      PathLine {
+        x: 0
+        y: 0
+      }
+    }
   }
 
   ColumnLayout {
