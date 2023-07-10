@@ -2,6 +2,7 @@ import QtQuick
 import QtQuick.Shapes 1.5
 import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.5
+import QtQuick.Controls.Material 2.3
 
 Item {
   id: window
@@ -133,30 +134,41 @@ Item {
     y: window.height / 2 + 40
     spacing: 10
 
-    TextField {
-      id: usernameField
+    Rectangle {
+      id: usernameFieldContainer
       Layout.fillWidth: true
-      selectByMouse: true
-      placeholderText: qsTr("Your username or email")
-      verticalAlignment: Text.AlignVCenter
+      height: 30
+      radius: 15
+      color: "transparent"
+      border.width: 0
 
-      background: Rectangle {
-        radius: 15
-        color: "white"
+      TextField {
+        id: usernameField
+        anchors.fill: parent
+        selectByMouse: true
+        placeholderText: qsTr("Your username or email")
+        verticalAlignment: Text.AlignVCenter
+        background: Rectangle {
+          color: "black"
+        }
       }
     }
 
-    TextField {
-      id: passwordField
+    Rectangle {
+      id: passwordFieldContainer
       Layout.fillWidth: true
-      selectByMouse: true
-      placeholderText: qsTr("Your password")
-      verticalAlignment: Text.AlignVCenter
-      echoMode: TextInput.Password
+      height: 30
+      radius: 15
+      color: "transparent"
+      border.width: 0
 
-      background: Rectangle {
-        radius: 15
-        color: "white"
+      TextField {
+        id: passwordField
+        anchors.fill: parent
+        selectByMouse: true
+        placeholderText: qsTr("Your password")
+        verticalAlignment: Text.AlignVCenter
+        echoMode: TextInput.PasswordEchoOnEdit
       }
     }
 
@@ -168,10 +180,17 @@ Item {
         Layout.fillWidth: true
         Layout.margins: 10
 
-        Text {
+        Rectangle {
+          color: "white"
+          radius: 15
+          border.color: "transparent"
           anchors.centerIn: parent
-          id: loginText
-          text: qsTr("Login")
+
+          Text {
+            id: loginText
+            anchors.centerIn: parent
+            text: qsTr("Login")
+          }
         }
 
         onClicked: {
@@ -191,10 +210,17 @@ Item {
         Layout.fillWidth: true
         Layout.margins: 10
 
-        Text {
+        Rectangle {
+          color: "white"
+          radius: 15
+          border.color: "transparent"
           anchors.centerIn: parent
-          id: registerText
-          text: qsTr("Register")
+
+          Text {
+            id: registerText
+            anchors.centerIn: parent
+            text: qsTr("Register")
+          }
         }
 
         onClicked: {
