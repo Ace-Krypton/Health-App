@@ -25,13 +25,12 @@ Item {
   }
 
   function clearFields() {
-    usernameField.clear()
-    passwordField.clear()
+    txtfield.clear()
+    passfield.clear()
   }
 
   function validateFields() {
-    return usernameField.text.trim().length > 0 && passwordField.text.trim(
-          ).length > 0
+    return txtfield.text.trim().length > 0 && passfield.text.trim().length > 0
   }
 
   Image {
@@ -132,24 +131,119 @@ Item {
     id: columnID
     x: 100
     y: window.height / 2 + 40
+    width: 350
     spacing: 10
 
     Rectangle {
       id: usernameFieldContainer
       Layout.fillWidth: true
-      height: 30
+      height: 50
       radius: 15
       color: "transparent"
       border.width: 0
 
       TextField {
-        id: usernameField
+        id: txtfield
         anchors.fill: parent
         selectByMouse: true
-        placeholderText: qsTr("Your username or email")
-        verticalAlignment: Text.AlignVCenter
-        background: Rectangle {
+
+        QtObject {
+          id: internal
+        }
+
+        color: '#ffffff'
+        placeholderTextColor: "#7fffffff"
+        selectedTextColor: '#000000'
+        selectionColor: '#ffffff'
+        font.family: "Verdana"
+        font.pointSize: 10
+        placeholderText: qsTr("Email or username")
+
+        cursorDelegate: Rectangle {
+          id: cursor
+          visible: false
           color: "black"
+          width: 2
+
+          SequentialAnimation {
+            loops: Animation.Infinite
+            running: txtfield.cursorVisible
+
+            PropertyAction {
+              target: cursor
+              property: 'visible'
+              value: true
+            }
+
+            PauseAnimation {
+              duration: 600
+            }
+
+            PropertyAction {
+              target: cursor
+              property: 'visible'
+              value: false
+            }
+
+            PauseAnimation {
+              duration: 600
+            }
+
+            onStopped: {
+              cursor.visible = false
+            }
+          }
+        }
+
+        MouseArea {
+          anchors.fill: parent
+          hoverEnabled: true
+          onHoveredChanged: {
+            if (containsMouse) {
+              bg.state = "hovered"
+            } else {
+              bg.state = "unhovered"
+            }
+          }
+
+          onClicked: {
+            txtfield.forceActiveFocus()
+          }
+        }
+
+        background: Rectangle {
+          id: bg
+          color: "#2c313c"
+          border.color: "beige"
+          radius: 10
+
+          states: [
+            State {
+              name: "hovered"
+              PropertyChanges {
+                target: bg
+                border.width: 1
+              }
+            },
+            State {
+              name: "unhovered"
+              PropertyChanges {
+                target: bg
+                border.width: 0
+              }
+            }
+          ]
+          transitions: [
+            Transition {
+              from: "*"
+              to: "*"
+              PropertyAnimation {
+                property: "border.width"
+                duration: 300
+                easing.type: Easing.InOutQuint
+              }
+            }
+          ]
         }
       }
     }
@@ -157,18 +251,115 @@ Item {
     Rectangle {
       id: passwordFieldContainer
       Layout.fillWidth: true
-      height: 30
+      height: 50
       radius: 15
       color: "transparent"
       border.width: 0
 
       TextField {
-        id: passwordField
+        id: passfield
         anchors.fill: parent
         selectByMouse: true
-        placeholderText: qsTr("Your password")
-        verticalAlignment: Text.AlignVCenter
-        echoMode: TextInput.PasswordEchoOnEdit
+        echoMode: TextInput.Password
+
+        QtObject {
+          id: passternal
+        }
+
+        color: '#ffffff'
+        placeholderTextColor: "#7fffffff"
+        selectedTextColor: '#000000'
+        selectionColor: '#ffffff'
+        font.family: "Verdana"
+        font.pointSize: 10
+        placeholderText: qsTr("Password")
+
+        cursorDelegate: Rectangle {
+          id: passCursor
+          visible: false
+          color: "black"
+          width: 2
+
+          SequentialAnimation {
+            loops: Animation.Infinite
+            running: passfield.cursorVisible
+
+            PropertyAction {
+              target: passCursor
+              property: 'visible'
+              value: true
+            }
+
+            PauseAnimation {
+              duration: 600
+            }
+
+            PropertyAction {
+              target: passCursor
+              property: 'visible'
+              value: false
+            }
+
+            PauseAnimation {
+              duration: 600
+            }
+
+            onStopped: {
+              passCursor.visible = false
+            }
+          }
+        }
+
+        MouseArea {
+          anchors.fill: parent
+          hoverEnabled: true
+          onHoveredChanged: {
+            if (containsMouse) {
+              background.state = "hovered"
+            } else {
+              background.state = "unhovered"
+            }
+          }
+
+          onClicked: {
+            passfield.forceActiveFocus()
+          }
+        }
+
+        background: Rectangle {
+          id: background
+          color: "#2c313c"
+          border.color: "beige"
+          radius: 10
+
+          states: [
+            State {
+              name: "hovered"
+              PropertyChanges {
+                target: background
+                border.width: 1
+              }
+            },
+            State {
+              name: "unhovered"
+              PropertyChanges {
+                target: background
+                border.width: 0
+              }
+            }
+          ]
+          transitions: [
+            Transition {
+              from: "*"
+              to: "*"
+              PropertyAnimation {
+                property: "border.width"
+                duration: 300
+                easing.type: Easing.InOutQuint
+              }
+            }
+          ]
+        }
       }
     }
 
@@ -195,8 +386,8 @@ Item {
 
         onClicked: {
           if (validateFields()) {
-            var username = usernameField.text
-            var password = passwordField.text
+            var username = txtfield.text
+            var password = passfield.text
             var success = userManager.loginUser(username, password)
             labelText.color = success ? "green" : "red"
             labelText.text = success ? "Successful Login" : "Failed Login"
@@ -225,8 +416,8 @@ Item {
 
         onClicked: {
           if (validateFields()) {
-            var username = usernameField.text
-            var password = passwordField.text
+            var username = txtfield.text
+            var password = passfield.text
             var success = userManager.registerUser(username, password)
             labelText.color = success ? "green" : "red"
             labelText.text = success ? "Successful Register" : "Failed Register"
