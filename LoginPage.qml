@@ -38,59 +38,8 @@ Item {
     source: "file:///home/draco/Downloads/background.png"
   }
 
-  //  Shape {
-  //    width: parent.width / 2
-  //    height: parent.height
-
-  //    ShapePath {
-  //      strokeWidth: 4
-  //      strokeColor: "#231F20"
-  //      fillGradient: LinearGradient {
-
-  //        GradientStop {
-  //          position: 0
-  //          color: "#231F20"
-  //        }
-
-  //        GradientStop {
-  //          position: 0.2
-  //          color: "#231F20"
-  //        }
-
-  //        GradientStop {
-  //          position: 0.4
-  //          color: "#231F20"
-  //        }
-
-  //        GradientStop {
-  //          position: 0.6
-  //          color: "#231F20"
-  //        }
-
-  //        GradientStop {
-  //          position: 1
-  //          color: "#231F20"
-  //        }
-  //      }
-
-  //      PathLine {
-  //        x: window.width - 100
-  //        y: window.height
-  //      }
-
-  //      PathLine {
-  //        x: 0
-  //        y: window.height
-  //      }
-
-  //      PathLine {
-  //        x: 0
-  //        y: 0
-  //      }
-  //    }
-  //  }
   ColumnLayout {
-    x: 110
+    x: 175
     anchors.top: parent.top
     spacing: 10
 
@@ -162,7 +111,7 @@ Item {
         cursorDelegate: Rectangle {
           id: cursor
           visible: false
-          color: "black"
+          color: "#7fffffff"
           width: 2
 
           SequentialAnimation {
@@ -195,55 +144,10 @@ Item {
           }
         }
 
-        MouseArea {
-          anchors.fill: parent
-          hoverEnabled: true
-          onHoveredChanged: {
-            if (containsMouse) {
-              bg.state = "hovered"
-            } else {
-              bg.state = "unhovered"
-            }
-          }
-
-          onClicked: {
-            txtfield.forceActiveFocus()
-          }
-        }
-
         background: Rectangle {
           id: bg
           color: "#2c313c"
-          border.color: "beige"
           radius: 10
-
-          states: [
-            State {
-              name: "hovered"
-              PropertyChanges {
-                target: bg
-                border.width: 1
-              }
-            },
-            State {
-              name: "unhovered"
-              PropertyChanges {
-                target: bg
-                border.width: 0
-              }
-            }
-          ]
-          transitions: [
-            Transition {
-              from: "*"
-              to: "*"
-              PropertyAnimation {
-                property: "border.width"
-                duration: 300
-                easing.type: Easing.InOutQuint
-              }
-            }
-          ]
         }
       }
     }
@@ -277,7 +181,7 @@ Item {
         cursorDelegate: Rectangle {
           id: passCursor
           visible: false
-          color: "black"
+          color: "#7fffffff"
           width: 2
 
           SequentialAnimation {
@@ -310,55 +214,10 @@ Item {
           }
         }
 
-        MouseArea {
-          anchors.fill: parent
-          hoverEnabled: true
-          onHoveredChanged: {
-            if (containsMouse) {
-              background.state = "hovered"
-            } else {
-              background.state = "unhovered"
-            }
-          }
-
-          onClicked: {
-            passfield.forceActiveFocus()
-          }
-        }
-
         background: Rectangle {
           id: background
           color: "#2c313c"
-          border.color: "beige"
           radius: 10
-
-          states: [
-            State {
-              name: "hovered"
-              PropertyChanges {
-                target: background
-                border.width: 1
-              }
-            },
-            State {
-              name: "unhovered"
-              PropertyChanges {
-                target: background
-                border.width: 0
-              }
-            }
-          ]
-          transitions: [
-            Transition {
-              from: "*"
-              to: "*"
-              PropertyAnimation {
-                property: "border.width"
-                duration: 300
-                easing.type: Easing.InOutQuint
-              }
-            }
-          ]
         }
       }
     }
@@ -372,7 +231,7 @@ Item {
         Layout.margins: 10
 
         Rectangle {
-          color: "white"
+          color: "green"
           radius: 15
           border.color: "transparent"
           anchors.centerIn: parent
@@ -421,6 +280,7 @@ Item {
             var success = userManager.registerUser(username, password)
             labelText.color = success ? "green" : "red"
             labelText.text = success ? "Successful Register" : "Failed Register"
+            messageBox.width = success ? labelText.width + 10 : labelText.width + 10
             clearFields()
           }
         }
@@ -433,6 +293,13 @@ Item {
       radius: 15
       Layout.alignment: Qt.AlignHCenter
 
+      border {
+        color: "black"
+        width: 1
+      }
+
+      color: "#2c313c"
+
       Label {
         id: messageLabel
         anchors.centerIn: parent
@@ -440,7 +307,6 @@ Item {
         Text {
           id: labelText
           text: qsTr("")
-          color: "yellow"
           anchors.centerIn: parent
           font.family: "Montserrat"
           font.pixelSize: 16
