@@ -280,7 +280,6 @@ Item {
             var success = userManager.registerUser(username, password)
             labelText.color = success ? "green" : "red"
             labelText.text = success ? "Successful Register" : "Failed Register"
-            messageBox.width = success ? labelText.width + 10 : labelText.width + 10
             clearFields()
           }
         }
@@ -290,27 +289,14 @@ Item {
     Rectangle {
       id: messageBox
       height: 30
-      radius: 15
       Layout.alignment: Qt.AlignHCenter
 
-      border {
-        color: "black"
-        width: 1
-      }
-
-      color: "#2c313c"
-
-      Label {
-        id: messageLabel
+      Text {
+        id: labelText
+        text: qsTr("")
         anchors.centerIn: parent
-
-        Text {
-          id: labelText
-          text: qsTr("")
-          anchors.centerIn: parent
-          font.family: "Montserrat"
-          font.pixelSize: 16
-        }
+        font.family: "Montserrat"
+        font.pixelSize: 16
       }
     }
   }
